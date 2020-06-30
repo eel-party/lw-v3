@@ -5,7 +5,11 @@
  */
 
 module.exports = {
+  siteMetadata: {
+    title: `l8wrks`,
+  },
   plugins: [
+
     // You can have multiple instances of this plugin
     // to read source nodes from different locations on your
     // filesystem.
@@ -28,28 +32,10 @@ module.exports = {
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `books`,
-        path: `${__dirname}/src/books/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `blog`,
-        path: `${__dirname}/src/blog/`,
-      },
-    },
-    {
-    resolve: `gatsby-source-filesystem`,
-    options: {
-      path: `${__dirname}/src/images`,
-        },
-    },
+    `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
+    'gatsby-plugin-theme-ui',
   ],
 }
