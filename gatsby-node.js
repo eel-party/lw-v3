@@ -32,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allMarkdownRemark.edges.forEach(({ node }) => {
     createPage({
       path: node.fields.slug,
+      // how to change component based on 
       component: path.resolve(`./src/templates/sketchbook.js`),
       context: {
         // Data passed to context is available

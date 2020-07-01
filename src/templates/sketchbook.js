@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 export default function Sketchbook({ data }) {
@@ -7,11 +7,25 @@ export default function Sketchbook({ data }) {
   return (
     <Layout>
       <div>
+        <p>this page is useing the sketcbook.js template</p>
         <h1>{post.frontmatter.title}</h1>
+        <h3>category: {post.frontmatter.category}</h3>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
-      <h3>This is where the pages (items) need to go</h3>
-      <p>Will work similar to pages/library.js </p>
+
+{/*possible to add IF statement to swap book content and category type?*/}
+
+      <h4>{data.allMarkdownRemark.totalCount} pages</h4>
+
+      {data.allMarkdownRemark.edges.map(({ node }) => (
+          <div key={node.id}>
+          <Link to={node.fields.slug}>
+            <h3>
+              {node.frontmatter.title}
+            </h3>
+          </Link>
+          </div>
+          ))}
     </Layout>
   )
 }
@@ -22,6 +36,29 @@ export const query = graphql`
       html
       frontmatter {
         title
+        category
+      }
+    }
+    allMarkdownRemark(filter:{
+    frontmatter:{
+      category: {
+       in: ["item"]
+      }
+    }
+  })  
+  {
+      edges {
+        node {
+          id
+          frontmatter {
+            title
+
+          }
+          fields {
+            slug
+          }
+
+        }
       }
     }
   }

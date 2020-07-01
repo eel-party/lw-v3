@@ -12,6 +12,7 @@ export default function Library({ data }) {
         Advert engine order-flow semiotics concrete boat grenade girl otaku tattoo artisanal RAF alcohol numinous decay. Office j-pop drone carbon soul-delay man otaku. Legba RAF face forwards DIY tattoo media Chiba render-farm engine plastic concrete realism sign. 
       </p>
       <h3>Bookshelf</h3>
+      {/*<p>It's very likely that these should be MDX files</p>*/}
 
       <h4>{data.allMarkdownRemark.totalCount} books</h4>
 
