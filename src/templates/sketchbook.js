@@ -13,9 +13,9 @@ export default function Sketchbook({ data }) {
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
 
-{/*possible to add IF statement to swap book content and category type?*/}
-
       <h4>{data.allMarkdownRemark.totalCount} pages</h4>
+
+      { post.frontmatter.category.item ? 'this is an item' : ''}
 
       {data.allMarkdownRemark.edges.map(({ node }) => (
           <div key={node.id}>
@@ -25,7 +25,7 @@ export default function Sketchbook({ data }) {
             </h3>
           </Link>
           </div>
-          ))}
+      ))}
     </Layout>
   )
 }
@@ -47,6 +47,7 @@ export const query = graphql`
     }
   })  
   {
+    totalCount
       edges {
         node {
           id
