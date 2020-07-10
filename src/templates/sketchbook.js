@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+// import Gallery from "../components/gallery"
 
 export default function Sketchbook({ data }) {
   const post = data.markdownRemark
@@ -12,20 +13,7 @@ export default function Sketchbook({ data }) {
         <h3>category: {post.frontmatter.category}</h3>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
-
-      <h4>{data.allMarkdownRemark.totalCount} pages</h4>
-
-      { post.frontmatter.category.item ? 'this is an item' : ''}
-
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-          <Link to={node.fields.slug}>
-            <h3>
-              {node.frontmatter.title}
-            </h3>
-          </Link>
-          </div>
-      ))}
+      {/*<Gallery />  */}
     </Layout>
   )
 }
@@ -37,29 +25,6 @@ export const query = graphql`
       frontmatter {
         title
         category
-      }
-    }
-    allMarkdownRemark(filter:{
-    frontmatter:{
-      category: {
-       in: ["item"]
-      }
-    }
-  })  
-  {
-    totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-
-          }
-          fields {
-            slug
-          }
-
-        }
       }
     }
   }
