@@ -6,6 +6,7 @@ export default function Gallery({ data }) {
 
       <div>
         <h3>This is the gallery</h3>
+        <p>gallery.js template</p>
         <h1>{data.markdownRemark.frontmatter.title}</h1>
       </div>
 

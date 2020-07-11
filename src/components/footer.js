@@ -20,6 +20,7 @@ export default function Layout({ children }) {
   return (
     <div>
     <Divider />
+    <p>footer.js layout</p>
       <p>All content <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1">CC BY-NC-SA 4.0</a> 2020 <Link to={`/`}>{data.site.siteMetadata.title}</Link>, unless otherwise stated.
       </p>
     </div>

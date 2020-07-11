@@ -8,7 +8,7 @@ export default function Sketchbook({ data }) {
   return (
     <Layout>
       <div>
-        <p>this page is useing the sketcbook.js template</p>
+        <p>sketcbook.js template</p>
         <h1>{post.frontmatter.title}</h1>
         <h3>category: {post.frontmatter.category}</h3>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
