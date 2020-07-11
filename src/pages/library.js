@@ -11,11 +11,13 @@ export default function Library({ data }) {
       <p>
         Advert engine order-flow semiotics concrete boat grenade girl otaku tattoo artisanal RAF alcohol numinous decay. Office j-pop drone carbon soul-delay man otaku. Legba RAF face forwards DIY tattoo media Chiba render-farm engine plastic concrete realism sign. 
       </p>
+
+      <small>list comes from library.js itself, not a component</small>
       <h3>Bookshelf</h3>
 
-      <h4>{data.allMarkdownRemark.totalCount} books</h4>
+      <h4>{data.allMdx.totalCount} books</h4>
 
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
           <Link to={node.fields.slug}>
             <h3>
@@ -36,7 +38,7 @@ export default function Library({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter:{
+    allMdx(filter:{
     frontmatter:{
       category: {
        in: ["sketchbook"]

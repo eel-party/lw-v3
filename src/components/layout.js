@@ -9,7 +9,7 @@ export default function Layout({ children }) {
   return (
     <div sx={{p: 4}}>
       <Header />
-      <p>layout.js layout</p>
+      <small>layout.js layout</small>
 
       {children}
 

@@ -1,7 +1,7 @@
-// import React from "react"
+import { Fragment } from "react"
 import { useStaticQuery, Link, graphql } from "gatsby"
 /** @jsx jsx */
-import { jsx, Flex } from 'theme-ui'
+import { jsx, Flex, Divider } from 'theme-ui'
 
 // will need to use this for links/nav: https://theme-ui.com/recipes/gatsby-link
 
@@ -18,8 +18,9 @@ export default function Layout({ children }) {
     `
   )
   return (
+    <Fragment>
     <div>
-    <p>header.js layout</p>
+    <small>header.js layout</small>
       <Link to={`/`}>
           <h3>
             {data.site.siteMetadata.title}
@@ -36,6 +37,10 @@ export default function Layout({ children }) {
           Contact
         </Link>
       </Flex>
+      <Divider />
     </div>
+
+    </Fragment>
+    
   )
 }
