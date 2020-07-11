@@ -37,5 +37,6 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,
     'gatsby-plugin-theme-ui',
+    `gatsby-plugin-mdx`,
   ],
 }

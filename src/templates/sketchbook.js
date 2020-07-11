@@ -4,7 +4,7 @@ import Layout from "../components/layout"
 // import Gallery from "../components/gallery"
 
 export default function Sketchbook({ data }) {
-  const post = data.markdownRemark
+  const post = data.mdx
   return (
     <Layout>
       <div>
@@ -20,7 +20,7 @@ export default function Sketchbook({ data }) {
 
 export const query = graphql`
   query($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
