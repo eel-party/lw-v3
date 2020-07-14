@@ -32,7 +32,23 @@ module.exports = {
         ignore: [`**/\.*`], // ignore files starting with a dot
       },
     },
-    `gatsby-transformer-remark`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        extensions: [".mdx", ".md"],
+        gatsbyRemarkPlugins: [
+          {
+            resolve: `gatsby-remark-images`,
+            options: {
+              maxWidth: 590,
+            },
+          },
+          // `gatsby-remark-copy-linked-files`,
+          // `gatsby-remark-smartypants`,
+        ],
+      },
+    },
+    // `gatsby-transformer-remark`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-netlify-cms`,

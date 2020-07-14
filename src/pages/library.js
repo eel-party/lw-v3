@@ -13,9 +13,9 @@ export default function Library({ data }) {
       </p>
       <h3>Bookshelf</h3>
 
-      <h4>{data.allMarkdownRemark.totalCount} books</h4>
+      <h4>{data.allMdx.totalCount} books</h4>
 
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
           <Link to={node.fields.slug}>
             <h3>
@@ -36,7 +36,7 @@ export default function Library({ data }) {
 
 export const query = graphql`
   query {
-    allMarkdownRemark(filter:{
+    allMdx(filter:{
     frontmatter:{
       category: {
        in: ["sketchbook"]
