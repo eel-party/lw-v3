@@ -17,7 +17,7 @@ export default function Library({ data }) {
 
       {data.allMdx.edges.map(({ node }) => (
           <div key={node.id}>
-          <Link >
+          <Link to={node.fields.slug}>
             <h3>
               {node.frontmatter.title}{" "}
               <span>
@@ -52,7 +52,9 @@ export const query = graphql`
             title
             date(formatString: "MMMM, YYYY")
           }
-          
+          fields {
+            slug
+          }
           excerpt
         }
       }

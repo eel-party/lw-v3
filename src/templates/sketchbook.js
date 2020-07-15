@@ -1,32 +1,31 @@
-import { graphql } from 'gatsby';
-import { MDXRenderer } from 'gatsby-plugin-mdx';
-import React from 'react';
+import React from "react"
+import { graphql } from "gatsby"
+import { MDXProvider } from "@mdx-js/react"
+import { MDXRenderer } from "gatsby-plugin-mdx"
+import { Link } from "gatsby"
 
-import Layout from '../components/Layout';
+const shortcodes = { Link } // Provide common components here
 
-export const query = graphql`
-  query($pathSlug: String!) {
-    mdx(frontmatter: { path: { eq: $pathSlug } }) {
-      frontmatter {
-        title
-        path
-      }
-      body
-    }
-  }
-`;
-
-const Book = ({ data: { mdx: book } }) => {
-  const { title } = book.frontmatter;
-  const { body } = book;
+export default function PageTemplate({ data: { mdx } }) {
   return (
     <div>
-      <Layout>
-        <h1>{title}</h1>
-        <MDXRenderer>{body}</MDXRenderer>
-      </Layout>
+    <p>This is the sketchbook.js template file.</p>
+      <h1>{mdx.frontmatter.title}</h1>
+      <MDXProvider components={shortcodes}>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
+      </MDXProvider>
     </div>
-  );
-};
+  )
+}
 
-export default Book;
+export const pageQuery = graphql`
+  query BlogPostQuery($id: String) {
+    mdx(id: { eq: $id }) {
+      id
+      body
+      frontmatter {
+        title
+      }
+    }
+  }
+`
