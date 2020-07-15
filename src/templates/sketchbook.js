@@ -1,31 +1,32 @@
-import React from "react"
-import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import { MDXRenderer } from "gatsby-plugin-mdx"
+import { graphql } from 'gatsby';
+import { MDXRenderer } from 'gatsby-plugin-mdx';
+import React from 'react';
 
-export default function Sketchbook({ data }) {
-  const post = data.mdx
-  return (
-    <Layout>
-      <div>
-        <p>this page is using the sketcbook.js template</p>
-        <h1>{post.frontmatter.title}</h1>
-        <h3>category: {post.frontmatter.category}</h3>
-        {/*<div dangerouslySetInnerHTML={{ __html: post.body }} />*/}
-        <MDXRenderer>{post.body}</MDXRenderer>
-      </div>
-    </Layout>
-  )
-}
+import Layout from '../components/Layout';
 
 export const query = graphql`
-  query($slug: String!) {
-    mdx(fields: { slug: { eq: $slug } }) {
-      body
+  query($pathSlug: String!) {
+    mdx(frontmatter: { path: { eq: $pathSlug } }) {
       frontmatter {
         title
-        category
+        path
       }
+      body
     }
   }
-`
+`;
+
+const Book = ({ data: { mdx: book } }) => {
+  const { title } = book.frontmatter;
+  const { body } = book;
+  return (
+    <div>
+      <Layout>
+        <h1>{title}</h1>
+        <MDXRenderer>{body}</MDXRenderer>
+      </Layout>
+    </div>
+  );
+};
+
+export default Book;

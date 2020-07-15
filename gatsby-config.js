@@ -23,6 +23,12 @@ module.exports = {
         name: `pages`,
         path: `${__dirname}/src/pages/`,
       },
+    },{
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `books`,
+        path: `${__dirname}/content/books/`,
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
@@ -36,16 +42,10 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [".mdx", ".md"],
-        gatsbyRemarkPlugins: [
-          {
-            resolve: `gatsby-remark-images`,
-            options: {
-              maxWidth: 590,
-            },
-          },
-          // `gatsby-remark-copy-linked-files`,
-          // `gatsby-remark-smartypants`,
-        ],
+        defaultLayouts: {
+          default: require.resolve(`./src/components/layout.js`),
+        },
+ 
       },
     },
     // `gatsby-transformer-remark`,

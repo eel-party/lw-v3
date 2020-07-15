@@ -1,6 +1,7 @@
 ---
-title: "Sketchbook 01"
-date: "2019-08-01"
+path: "library/sketchbook-03"
+title: "Sketchbook 03"
+date: "2015-07-01"
 category: "sketchbook"
 ---
 

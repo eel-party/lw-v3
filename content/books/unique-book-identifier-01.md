@@ -1,4 +1,5 @@
 ---
+path: "library/sketchbook-01"
 title: "Sketchbook 01"
 date: "2019-08-01"
 category: "sketchbook"

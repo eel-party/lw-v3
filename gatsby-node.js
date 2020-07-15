@@ -1,44 +1,30 @@
-const path = require(`path`)
-const { createFilePath } = require(`gatsby-source-filesystem`)
 
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions
-  if (node.internal.type === `Mdx`) {
-    const slug = createFilePath({ node, getNode, basePath: `pages` })
-    createNodeField({
-      node,
-      name: `slug`,
-      value: slug,
-    })
-  }
-}
-
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     query {
       allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
+        nodes {
+          frontmatter {
+            path
           }
         }
       }
     }
-  `)
+  `);
 
-  result.data.allMdx.edges.forEach(({ node }) => {
-    createPage({
-      path: node.fields.slug,
-      // how to change component based on 
-      component: path.resolve(`./src/templates/sketchbook.js`),
+  if (result.errors) {
+    reporter.panic('failed to create posts ', result.errors);
+  }
+
+  const pages = result.data.allMdx.nodes;
+
+  pages.forEach(page => {
+    actions.createPage({
+      path: page.frontmatter.path,
+      component: require.resolve('./src/templates/sketchbook.js'),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
-        slug: node.fields.slug,
+        pathSlug: page.frontmatter.path,
       },
-    })
-  })
-}
+    });
+  });
+};
