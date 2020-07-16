@@ -19,6 +19,7 @@ exports.createPages = ({ actions, graphql }) => {
           }
           frontmatter {
             title
+            cover
           }
         }
       }
