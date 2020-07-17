@@ -16,7 +16,6 @@ export default ({ data }) => {
   return (
     <Layout>
       <IndexWrapper>
-      <p>Systema courier savant math-semiotics fetishism denim free-market chrome. Neon nano-tube Tokyo jeans office industrial grade table engine meta-range-rover-ware grenade shrine media bridge A.I.. Shrine dead San Francisco denim paranoid RAF alcohol DIY. </p>
         {/* <Dump data={data}></Dump> */}
         {data.allMdx.nodes.map(
           ({ id, excerpt, frontmatter, fields }) => (

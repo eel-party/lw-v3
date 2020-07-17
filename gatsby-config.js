@@ -1,6 +1,12 @@
 const siteMetadata = {
   title: `The Localhost Blog`,
   description: `This is my coding blog where I write about my coding journey.`,
+  image: `/default-site-image.jpg`,
+  siteUrl: `https://thelocalhost.blog`,
+  siteLanguage: `en-US`,
+  siteLocale: `en_us`,
+  twitterUsername: `@`,
+  authorName: `Lee`,
 };
 
 module.exports = {
@@ -30,6 +36,9 @@ module.exports = {
           },
         ],
       },
+    },
+    {
+      resolve: 'gatsby-plugin-mdx-frontmatter'
     },
     {
       resolve: `gatsby-source-filesystem`,
