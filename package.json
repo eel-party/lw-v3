@@ -1,0 +1,32 @@
+{
+  "name": "lw-v3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eel-party/lw-v3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eel-party/lw-v3/issues"
+  },
+  "homepage": "https://github.com/eel-party/lw-v3#readme",
+  "dependencies": {
+    "@mdx-js/mdx": "^1.6.11",
+    "@mdx-js/react": "^1.6.11",
+    "babel-plugin-styled-components": "^1.10.7",
+    "gatsby": "^2.24.4",
+    "gatsby-plugin-mdx": "^1.2.27",
+    "gatsby-plugin-styled-components": "^3.3.10",
+    "gatsby-source-filesystem": "^2.3.20",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "styled-components": "^5.1.1"
+  }
+}
